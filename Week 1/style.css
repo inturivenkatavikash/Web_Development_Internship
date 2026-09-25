@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated background blobs */
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    animation: floatBlob 8s ease-in-out infinite alternate;
+}
+.container::before {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #a855f7, #6366f1);
+    top: -100px;
+    left: -100px;
+}
+.container::after {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #06b6d4, #3b82f6);
+    bottom: -100px;
+    right: -100px;
+    animation-delay: 2s;
+}
+
+@keyframes floatBlob {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 30px) scale(1.1); }
+}
+
+.week-badge {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #a78bfa;
+    background: rgba(167, 139, 250, 0.1);
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    padding: 8px 20px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+}
+
+.calculator {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    position: relative;
+    z-index: 1;
+    min-width: 320px;
+}
+
+/* Display */
+.display {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    padding: 16px 18px 12px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.display-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #6366f1;
+    margin-bottom: 8px;
+}
+
+.display input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-align: right;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #e2e8f0;
+    letter-spacing: 2px;
+    caret-color: #a78bfa;
+}
+
+.display input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Button rows */
+.btn-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Base button */
+.calculator form input[type="button"] {
+    flex: 1;
+    height: 68px;
+    border: none;
+    outline: none;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Ripple effect */
+.calculator form input[type="button"]:active {
+    transform: scale(0.93);
+}
+
+/* Number buttons */
+.btn-number {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.btn-number:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Operator buttons */
+.btn-operator {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.7), rgba(139, 92, 246, 0.7)) !important;
+    color: #fff !important;
+    border: 1px solid rgba(167, 139, 250, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    font-size: 20px !important;
+}
+.btn-operator:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9)) !important;
+    box-shadow: 0 6px 25px rgba(99, 102, 241, 0.5);
+}
+
+/* Special buttons */
+.btn-special {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.btn-special:hover {
+    background: rgba(255, 255, 255, 0.14) !important;
+}
+
+.btn-clear {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.7), rgba(220, 38, 38, 0.6)) !important;
+    color: #fff !important;
+    border: 1px solid rgba(239, 68, 68, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+}
+.btn-clear:hover {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.8)) !important;
+    box-shadow: 0 6px 25px rgba(239, 68, 68, 0.4);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.7), rgba(234, 88, 12, 0.6)) !important;
+    color: #fff !important;
+    border: 1px solid rgba(249, 115, 22, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.2);
+    font-size: 22px !important;
+}
+.btn-delete:hover {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.9), rgba(234, 88, 12, 0.8)) !important;
+}
+
+/* Equal button */
+.btn-equal {
+    flex: 2 !important;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow:
+        0 8px 25px rgba(99, 102, 241, 0.5),
+        0 0 0 1px rgba(167, 139, 250, 0.3);
+    font-size: 24px !important;
+    letter-spacing: 2px;
+    font-family: 'Orbitron', sans-serif !important;
+    font-weight: 900 !important;
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+.btn-equal:hover {
+    transform: scale(1.03) !important;
+    box-shadow: 0 12px 35px rgba(99, 102, 241, 0.7);
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5), 0 0 0 1px rgba(167, 139, 250, 0.3); }
+    50% { box-shadow: 0 8px 35px rgba(168, 85, 247, 0.7), 0 0 0 2px rgba(167, 139, 250, 0.5); }
+}

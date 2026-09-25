@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A modern glassmorphism calculator with smooth animations" />
+    <title>Calculator | Week 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="week-badge">⚡ Week 1 — Calculator</div>
+        <div class="calculator">
+            <form onsubmit="return false;">
+                <div class="display">
+                    <div class="display-label">RESULT</div>
+                    <input type="text" id="display" readonly placeholder="0" />
+                </div>
+                <div class="btn-row">
+                    <input type="button" value="AC" onclick="clearDisplay()" class="btn-special btn-clear">
+                    <input type="button" value="⌫" onclick="deleteLast()" class="btn-special btn-delete">
+                    <input type="button" value="." onclick="appendToDisplay('.')" class="btn-special">
+                    <input type="button" value="÷" onclick="appendToDisplay('/')" class="btn-operator">
+                </div>
+                <div class="btn-row">
+                    <input type="button" value="7" onclick="appendToDisplay('7')" class="btn-number">
+                    <input type="button" value="8" onclick="appendToDisplay('8')" class="btn-number">
+                    <input type="button" value="9" onclick="appendToDisplay('9')" class="btn-number">
+                    <input type="button" value="×" onclick="appendToDisplay('*')" class="btn-operator">
+                </div>
+                <div class="btn-row">
+                    <input type="button" value="4" onclick="appendToDisplay('4')" class="btn-number">
+                    <input type="button" value="5" onclick="appendToDisplay('5')" class="btn-number">
+                    <input type="button" value="6" onclick="appendToDisplay('6')" class="btn-number">
+                    <input type="button" value="−" onclick="appendToDisplay('-')" class="btn-operator">
+                </div>
+                <div class="btn-row">
+                    <input type="button" value="1" onclick="appendToDisplay('1')" class="btn-number">
+                    <input type="button" value="2" onclick="appendToDisplay('2')" class="btn-number">
+                    <input type="button" value="3" onclick="appendToDisplay('3')" class="btn-number">
+                    <input type="button" value="+" onclick="appendToDisplay('+')" class="btn-operator">
+                </div>
+                <div class="btn-row">
+                    <input type="button" value="00" onclick="appendToDisplay('00')" class="btn-number">
+                    <input type="button" value="0" onclick="appendToDisplay('0')" class="btn-number">
+                    <input type="button" value="=" onclick="calculate()" class="btn-equal">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function appendToDisplay(val) {
+            const disp = document.getElementById('display');
+            // Prevent multiple operators in a row
+            const operators = ['+', '-', '*', '/'];
+            const last = disp.value.slice(-1);
+            if (operators.includes(val) && operators.includes(last)) return;
+            disp.value += val;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function deleteLast() {
+            const disp = document.getElementById('display');
+            disp.value = disp.value.toString().slice(0, -1);
+        }
+
+        function calculate() {
+            const disp = document.getElementById('display');
+            try {
+                const result = Function('"use strict"; return (' + disp.value + ')')();
+                disp.value = parseFloat(result.toFixed(10)).toString();
+            } catch (e) {
+                disp.value = 'Error';
+                setTimeout(() => { disp.value = ''; }, 1200);
+            }
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if ('0123456789+-*/%.'.includes(e.key)) appendToDisplay(e.key);
+            else if (e.key === 'Enter' || e.key === '=') calculate();
+            else if (e.key === 'Backspace') deleteLast();
+            else if (e.key === 'Escape') clearDisplay();
+        });
+    </script>
+</body>
+
+</html>

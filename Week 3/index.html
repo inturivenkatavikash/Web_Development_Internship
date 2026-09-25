@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Smart To-Do List — Week 3 internship project" />
+  <title>TaskFlow | To-Do List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style2.css" />
+</head>
+<body>
+  <div class="app-wrapper">
+    <div class="container">
+
+      <div class="app-header">
+        <div class="app-icon">✅</div>
+        <div>
+          <p class="week-label">Week 3 — To-Do App</p>
+          <h1>TaskFlow</h1>
+        </div>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat">
+          <span class="stat-num" id="total-count">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" id="done-count">0</span>
+          <span class="stat-label">Done</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" id="pending-count">0</span>
+          <span class="stat-label">Pending</span>
+        </div>
+      </div>
+
+      <div class="input-section">
+        <input type="text" id="todo-input" placeholder="What needs to be done?" autocomplete="off" />
+        <button id="add-btn">+</button>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="pending">Pending</button>
+        <button class="filter-btn" data-filter="done">Done</button>
+      </div>
+
+      <ul id="todo-list"></ul>
+
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">🎯</div>
+        <p>No tasks yet! Add one above.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Fixed: was incorrectly pointing to script.js, corrected to script2.js -->
+  <script src="script2.js"></script>
+</body>
+</html>

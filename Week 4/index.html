@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Connect 4 — 2-player strategy game. Week 4 internship project." />
+    <title>Connect 4 | Week 4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style3.css">
+    <script src="script3.js" defer></script>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="week-badge">🎮 Week 4 — Game Dev</div>
+        <h1>Connect <span class="highlight">4</span></h1>
+
+        <div class="player-status">
+            <div class="player-card" id="card-pink">
+                <div class="player-chip pink-chip"></div>
+                <div class="player-info">
+                    <span class="player-label">Player 1</span>
+                    <span class="player-name">Pink</span>
+                </div>
+                <div class="turn-arrow">◀</div>
+            </div>
+            <div class="vs-badge">VS</div>
+            <div class="player-card" id="card-green">
+                <div class="turn-arrow">▶</div>
+                <div class="player-info" style="text-align:right">
+                    <span class="player-label">Player 2</span>
+                    <span class="player-name">Green</span>
+                </div>
+                <div class="player-chip green-chip"></div>
+            </div>
+        </div>
+
+        <div id="winner-banner" class="winner-banner hidden">
+            <span id="winner-text"></span>
+            <button id="reset-btn" onclick="resetGame()">🔄 Play Again</button>
+        </div>
+
+        <div class="board-container">
+            <div id="board"></div>
+        </div>
+
+        <button class="reset-link" onclick="resetGame()">↩ Reset Game</button>
+    </div>
+</body>
+</html>
